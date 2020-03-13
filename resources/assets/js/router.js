@@ -1,7 +1,9 @@
 import VueRouter from 'vue-router';
 
-import SiteLayout from './components/site/Main';
+// site components
+import SiteLayout from './components/site/Layout';
 import Home from './components/site/Home';
+import Weather from './components/site/Weather';
 
 const routes = [
     {
@@ -12,6 +14,11 @@ const routes = [
                 path: '',
                 name: 'site.home',
                 component: Home,
+            },
+            {
+                path: 'weather',
+                name: 'site.weather',
+                component: Weather,
             },
         ]
     },
