@@ -5,12 +5,25 @@ namespace App\Services\Weather\OpenWeatherMap;
 use App\Services\Weather\WeatherServiceInterface;
 use GuzzleHttp\Client;
 
+/**
+ * Class OpenWeatherMapService
+ * @package App\Services\Weather\OpenWeatherMap
+ */
 class OpenWeatherMapService implements WeatherServiceInterface
 {
+    /**
+     * @var string
+     */
     private $getCurrentWeatherURI = 'https://api.openweathermap.org/data/2.5/weather';
 
+    /**
+     * @var string
+     */
     private $getWeatherIconUri = 'https://openweathermap.org/img/wn';
 
+    /**
+     * @var mixed
+     */
     private $apiKey;
 
     /**
@@ -24,12 +37,20 @@ class OpenWeatherMapService implements WeatherServiceInterface
      */
     private $client;
 
+    /**
+     * OpenWeatherMapService constructor.
+     * @param Client $client
+     */
     public function __construct(Client $client)
     {
         $this->apiKey = env('OPENWEATHER_API_KEY');
         $this->client = $client;
     }
 
+    /**
+     * @param string $cityName
+     * @return array
+     */
     public function getCurrentWeatherDataByCityName(string $cityName): array
     {
         $parameters = [
@@ -55,21 +76,37 @@ class OpenWeatherMapService implements WeatherServiceInterface
         ];
     }
 
+    /**
+     * @param array $data
+     * @return mixed|null
+     */
     private function getCurrentTemp(array $data)
     {
         return $data['main']['temp'] ?? null;
     }
 
+    /**
+     * @param array $data
+     * @return mixed|null
+     */
     private function getFeelsLikeTemp(array $data)
     {
         return $data['main']['feels_like'] ?? null;
     }
 
+    /**
+     * @param array $data
+     * @return mixed|null
+     */
     private function getPressure(array $data)
     {
         return $data['main']['pressure'] ?? null;
     }
 
+    /**
+     * @param array $data
+     * @return string|null
+     */
     private function getIconURI(array $data)
     {
         $iconName = $data['weather'][0]['icon'] ?? null;
@@ -79,6 +116,12 @@ class OpenWeatherMapService implements WeatherServiceInterface
         return "{$this->getWeatherIconUri}/{$iconName}.png";
     }
 
+    /**
+     * @param string $uri
+     * @param array $parameters
+     * @param string $method
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     private function sendRequest(string $uri, array $parameters = [], string $method = 'GET')
     {
         $parameters['appid'] = $this->apiKey;
