@@ -20,6 +20,6 @@ class WeatherController extends Controller
 
     public function getByCityName(string $cityName)
     {
-        return "test $cityName";
+        return $this->service->getCurrentWeatherDataByCityName($cityName);
     }
 }
