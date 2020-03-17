@@ -15,10 +15,12 @@
             <tbody>
             <tr v-for="order in ordersList.data">
                 <th scope="row">{{ order.id }}</th>
-                <td>{{ order.partner_id }}</td>
-                <td>---</td>
-                <td>---</td>
-                <td>{{ order.status }}</td>
+                <td>{{ order.partner.name }}</td>
+                <td>{{ getSumOfProducts(order.product) }}</td>
+                <td>
+                    <p v-for="product in order.product">{{ product.name }}</p>
+                </td>
+                <td>{{ order.status_title }}</td>
             </tr>
             </tbody>
         </table>
@@ -43,6 +45,13 @@
                         console.log(response.data);
                         this.ordersList = response.data;
                     });
+            },
+            getSumOfProducts(products) {
+                let sum = 0;
+                for (let i = 0; i < products.length; i++) {
+                    sum += products[i].price;
+                }
+                return sum;
             }
         }
     }

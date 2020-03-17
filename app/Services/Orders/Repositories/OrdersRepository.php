@@ -12,11 +12,14 @@ use App\Models\Order;
  */
 class OrdersRepository
 {
+
     /**
-     * @return Order[]|\Illuminate\Database\Eloquent\Collection
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
     public function getOrdersList()
     {
-        return Order::paginate(20);
+        return Order::with('partner:id,name')
+            ->with('product')
+            ->paginate(20);
     }
 }

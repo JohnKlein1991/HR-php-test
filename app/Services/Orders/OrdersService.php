@@ -28,7 +28,7 @@ class OrdersService
 
 
     /**
-     * @return \App\Models\Order[]|\Illuminate\Database\Eloquent\Collection
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
     public function getOrdersList()
     {
