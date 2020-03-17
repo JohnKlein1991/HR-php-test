@@ -1,5 +1,6 @@
 import Vue from 'vue';
 
+import LaravelPagination from 'laravel-vue-pagination';
 import VueRouter from 'vue-router';
 import router from "./router";
 import VueBootstrap from 'bootstrap-vue';
@@ -16,6 +17,8 @@ Vue.use(VueRouter);
 Vue.use(VueBootstrap);
 
 Vue.router = router;
+
+Vue.component('pagination', LaravelPagination);
 
 const app = new Vue({
     el: '#app',

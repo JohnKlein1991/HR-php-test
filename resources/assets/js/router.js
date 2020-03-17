@@ -4,6 +4,9 @@ import VueRouter from 'vue-router';
 import SiteLayout from './components/site/Layout';
 import Home from './components/site/Home';
 import Weather from './components/site/Weather';
+// orders components
+import OrdersList from './components/site/order/List';
+import OrdersLayout from './components/site/order/Layout';
 
 const routes = [
     {
@@ -19,6 +22,17 @@ const routes = [
                 path: 'weather',
                 name: 'site.weather',
                 component: Weather,
+            },
+            {
+                path: 'order',
+                component: OrdersLayout,
+                children: [
+                    {
+                        path: 'list',
+                        name: 'site.order.list',
+                        component: OrdersList,
+                    },
+                ]
             },
         ]
     },

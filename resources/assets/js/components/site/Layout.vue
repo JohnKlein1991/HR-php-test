@@ -5,6 +5,7 @@
             <nav class="my-2 my-md-0 mr-md-3">
                 <router-link class="p-2 text-dark" :to="{ name: 'site.home' }">Главная</router-link>
                 <router-link class="p-2 text-dark" :to="{ name: 'site.weather' }">Погода в Брянске</router-link>
+                <router-link class="p-2 text-dark" :to="{ name: 'site.order.list' }">Заказы</router-link>
             </nav>
         </div>
         <div class="container">
@@ -14,12 +15,6 @@
             <div class="row">
                 <div class="col-12 col-md">
                     <small class="d-block mb-3 text-muted">&copy; Super App</small>
-                </div>
-                <div class="col-6 col-md">
-                    <h5>Навигация</h5>
-                    <ul class="list-unstyled text-small">
-                        <router-link class="text-muted" :to="{ name: 'site.home' }">Главная</router-link>
-                    </ul>
                 </div>
             </div>
         </footer>
