@@ -25,6 +25,7 @@ Route::prefix('order')
     ->group(function () {
         Route::name('list')->get('list', 'OrdersController@index');
         Route::name('getStatusesList')->get('statuses-list', 'OrdersController@getStatusesList');
+        Route::name('update')->match(['patch', 'put'], 'update/{order}', 'OrdersController@update');
         Route::name('getOrder')->get('{id}', 'OrdersController@getOrder');
     });
 

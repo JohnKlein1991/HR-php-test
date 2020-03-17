@@ -43,6 +43,15 @@ class Order extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $fillable = [
+        'client_email',
+        'partner_id',
+        'status'
+    ];
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function partner()

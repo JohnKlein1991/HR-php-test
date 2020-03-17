@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Requests\UpdateOrderRequest;
+use App\Models\Order;
 use App\Services\Orders\OrdersService;
-use Illuminate\Http\Request;
 
 /**
  * Class OrdersController
@@ -52,5 +53,17 @@ class OrdersController extends Controller
     {
         $data = $this->service->getStatusesList();
         return $data->toJson();
+    }
+
+    /**
+     * @param UpdateOrderRequest $request
+     * @param Order $order
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public function update(UpdateOrderRequest $request, Order $order)
+    {
+        $data = $request->getData();
+        $this->service->updateOrder($order, $data);
+        return response('Success', 200);
     }
 }

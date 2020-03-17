@@ -4,6 +4,7 @@
 namespace App\Services\Orders;
 
 
+use App\Models\Order;
 use App\Services\Orders\Repositories\OrdersRepository;
 
 /**
@@ -50,5 +51,16 @@ class OrdersService
     public function getStatusesList()
     {
         return $this->repository->getStatusesList();
+    }
+
+
+    /**
+     * @param Order $order
+     * @param array $data
+     * @return bool
+     */
+    public function updateOrder(Order $order, array $data)
+    {
+        return $this->repository->updateOrder($order, $data);
     }
 }

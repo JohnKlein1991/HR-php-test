@@ -55,4 +55,14 @@ class OrdersRepository
         ];
         return new Collection($list);
     }
+
+    /**
+     * @param Order $order
+     * @param array $data
+     * @return bool
+     */
+    public function updateOrder(Order $order, array $data)
+    {
+        return $order->update($data);
+    }
 }

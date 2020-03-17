@@ -71,12 +71,13 @@
             sendData() {
                 this.isUpdateSuccess = false;
                 this.hasUpdateErrors = false;
-                this.axios.put('/admin/user/update/' + this.userId, {
-                    email: this.userEmail,
-                    role_id: this.userRoleId,
+                this.axios.put('/order/update/' + this.orderId, {
+                    client_email: this.clientEmail,
+                    partner_id: this.ordersPartnerId,
+                    status: this.ordersStatusId
                 })
                     .then(response => {
-                        this.getUserData(this.userId);
+                        this.getOrderData(this.orderId);
                         this.isUpdateSuccess = true;
                         console.log(response);
                     })
