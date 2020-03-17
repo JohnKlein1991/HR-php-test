@@ -6,6 +6,7 @@ import Home from './components/site/Home';
 import Weather from './components/site/Weather';
 // orders components
 import OrdersList from './components/site/order/List';
+import OrdersEdit from './components/site/order/Edit';
 import OrdersLayout from './components/site/order/Layout';
 
 const routes = [
@@ -31,6 +32,11 @@ const routes = [
                         path: 'list',
                         name: 'site.order.list',
                         component: OrdersList,
+                    },
+                    {
+                        path: 'edit/:id',
+                        name: 'site.order.edit',
+                        component: OrdersEdit
                     },
                 ]
             },

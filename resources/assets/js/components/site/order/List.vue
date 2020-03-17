@@ -14,7 +14,11 @@
             </thead>
             <tbody>
             <tr v-for="order in ordersList.data">
-                <th scope="row">{{ order.id }}</th>
+                <th scope="row">
+                    <router-link target="_blank" :to="{ name: 'site.order.edit', params: {id: order.id}}">
+                        {{ order.id }}
+                    </router-link>
+                </th>
                 <td>{{ order.partner.name }}</td>
                 <td>{{ getSumOfProducts(order.product) }}</td>
                 <td>
