@@ -34,4 +34,21 @@ class OrdersService
     {
         return $this->repository->getOrdersList();
     }
+
+    /**
+     * @param int $id
+     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model
+     */
+    public function getOrderById(int $id)
+    {
+        return $this->repository->getOrderById($id);
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function getStatusesList()
+    {
+        return $this->repository->getStatusesList();
+    }
 }

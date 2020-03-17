@@ -34,4 +34,23 @@ class OrdersController extends Controller
 
         return $list->toJson();
     }
+
+    /**
+     * @param int $id
+     * @return string
+     */
+    public function getOrder(int $id)
+    {
+        $data = $this->service->getOrderById($id);
+        return $data->toJson();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatusesList()
+    {
+        $data = $this->service->getStatusesList();
+        return $data->toJson();
+    }
 }

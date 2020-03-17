@@ -55,7 +55,8 @@ class Order extends Model
      */
     public function product()
     {
-        return $this->belongsToMany(Product::class, 'order_products');
+        return $this->belongsToMany(Product::class, 'order_products')
+            ->withPivot(['quantity']);
     }
 
     /**
@@ -72,7 +73,7 @@ class Order extends Model
             case self::STATUS_ID_FINISHED:
                 return self::STATUS_TITLE_FINISHED;
             default:
-                return 'hfhf';
+                return '';
         }
     }
 }

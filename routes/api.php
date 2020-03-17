@@ -24,6 +24,12 @@ Route::prefix('order')
     ->name('order.')
     ->group(function () {
         Route::name('list')->get('list', 'OrdersController@index');
+        Route::name('getStatusesList')->get('statuses-list', 'OrdersController@getStatusesList');
+        Route::name('getOrder')->get('{id}', 'OrdersController@getOrder');
     });
 
-
+Route::prefix('partner')
+    ->name('partner.')
+    ->group(function () {
+        Route::name('list')->get('list', 'PartnerController@getList');
+    });
