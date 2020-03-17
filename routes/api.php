@@ -20,4 +20,10 @@ Route::prefix('weather')
         Route::name('get_by_city_name')->get('get-by-city/{city}', 'WeatherController@getByCityName');
     });
 
+Route::prefix('order')
+    ->name('order.')
+    ->group(function () {
+        Route::name('list')->get('list', 'OrdersController@index');
+    });
+
 
